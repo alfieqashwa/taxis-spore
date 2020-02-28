@@ -14,7 +14,9 @@ function Map({ data }) {
     >
       {data.map((taxi, i) => (
         <Marker key={i} longitude={taxi[0]} latitude={taxi[1]}>
-          hi
+          <span role="img" aria-label="sheep">
+            🐑
+          </span>
         </Marker>
       ))}
     </ReactMapGL>
