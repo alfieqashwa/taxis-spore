@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import DeckGL from "@deck.gl/react";
 import ReactMapGL, { Marker } from "react-map-gl";
 
 import { singapore } from "./location";
@@ -9,6 +10,8 @@ function Map({ data }) {
   return (
     <ReactMapGL
       {...viewport}
+      mapStyle="mapbox://styles/mapbox/dark-v9"
+      // mapStyle="mapbox://styles/alfieqashwa/ck73fl8tm0rvg1in02ir6d99n"
       onViewportChange={setViewport}
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
     >

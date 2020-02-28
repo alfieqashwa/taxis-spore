@@ -1,8 +1,5 @@
 import React from "react";
-import DeckGL from "@deck.gl/react";
-import { LineLayer } from "@deck.gl/layers";
 import axios from "axios";
-import uuid from "uuid/v4";
 
 import Map from "./Map";
 
@@ -21,6 +18,10 @@ function App() {
   }, []);
 
   // console.log(JSON.stringify(data, null, 2));
-  return <Map data={data} />;
+  return (
+    <>
+      <Map data={data} />
+    </>
+  );
 }
 export default App;
