@@ -33,8 +33,9 @@ label {
   width: 150px;
 }
 
-input {
+.selected {
   margin-left: 20px;
+  color: tomato;
 }
 
 .input.disabled {

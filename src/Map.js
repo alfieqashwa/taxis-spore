@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 // import DeckGL from "@deck.gl/react";
 import ReactMapGL, { Marker } from "react-map-gl";
-
 import { singapore } from "./location";
 
 function Map({ data }) {
   const [viewport, setViewport] = useState(singapore);
 
+  // console.log(viewport);
   return (
     <ReactMapGL
       {...viewport}
