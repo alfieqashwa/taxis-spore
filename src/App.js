@@ -1,59 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import DeckGL from "@deck.gl/react";
 import { LineLayer } from "@deck.gl/layers";
-import { StaticMap } from "react-map-gl";
 import axios from "axios";
+import uuid from "uuid/v4";
 
-// Set your mapbox access token here
+import Map from "./Map";
 
-// Viewport settings
-const initialViewState = {
-  longitude: 103.830392,
-  latitude: 1.340863,
-  zoom: 13,
-  pitch: 0,
-  bearing: 0
-};
+const API =
+  "https://api.data.gov.sg/v1/transport/taxi-availability?date_time=2018-03-01T13%3A00%3A00Z";
 
-// Data to be used by the LineLayer
-// const data = [
-//   {
-//     sourcePosition: [-122.41669, 37.7853],
-//     targetPosition: [-122.41669, 37.781]
-//   }
-// ];
-
-// DeckGL react component
 function App() {
-  const [viewport, setViewPort] = useState(initialViewState);
-  const [data, setData] = useState({ taxiAvailability: [] });
+  const [data, setData] = React.useState([]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(
-        "https://api.data.gov.sg/v1/transport/taxi-availability"
-      );
-      setData(result.data);
+      const result = await axios(API);
+      setData(result.data.features[0].geometry.coordinates);
     };
     fetchData();
   }, []);
 
-  const layers = [new LineLayer({ id: "line-layer", data })];
-  console.log(JSON.stringify(data.features, null, 2));
-
-  return (
-    <DeckGL
-      initialViewState={initialViewState}
-      controller={true}
-      layers={layers}
-    >
-      <StaticMap
-        {...viewport}
-        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-        mapStyle="mapbox://styles/alfieqashwa/ck73fl8tm0rvg1in02ir6d99n"
-      />
-    </DeckGL>
-  );
+  // console.log(JSON.stringify(data, null, 2));
+  return <Map data={data} />;
 }
-
 export default App;
