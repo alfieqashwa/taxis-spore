@@ -1,14 +1,20 @@
 import React from "react";
+import DatePicker from "react-datepicker";
 
-function ControlPanel({ total, value, onSubmit, onChange }) {
+function ControlPanel({ total, startDate, onChange }) {
   return (
     <div className="control-panel">
       <h3>Taxis Availability</h3>
       <h4>Total Taxi: {total}</h4>
-      <form onSubmit={onSubmit}>
-        <input value={value} onChange={onChange} />
-        <button type="submit">submit</button>
-      </form>
+      <DatePicker
+        selected={startDate}
+        onChange={onChange}
+        showTimeSelect
+        timeFormat="HH:mm"
+        timeIntervals={60}
+        timeCaption="time"
+        dateFormat="yyyy MMMM dd, hh:mm aa"
+      />
     </div>
   );
 }
