@@ -37,6 +37,19 @@ function ControlPanel({
           <p>Please input between 2016 to today!</p>
         </div>
       )}
+      <footer className="footer">
+        <div className="container taCenter">
+          <span>
+            <a
+              href="https://alfieqashwa.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              alfieqashwa
+            </a>
+          </span>
+        </div>
+      </footer>
     </div>
   );
 }
