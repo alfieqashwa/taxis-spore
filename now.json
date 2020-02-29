@@ -1,7 +1,0 @@
-{
-  "build": {
-    "env": {
-      "VARIABLE_NAME": "@react_app_mapbox_token"
-    }
-  }
-}
