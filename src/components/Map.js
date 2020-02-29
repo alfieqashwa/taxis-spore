@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 // import DeckGL from "@deck.gl/react";
-import ReactMapGL, { Marker } from "react-map-gl";
-import { singapore } from "./location";
+import ReactMapGL from "react-map-gl";
+
+import MarkerTaxi from "./MarkerTaxi";
+import { singapore } from "../utils/location";
 
 function Map({ data }) {
   const [viewport, setViewport] = useState(singapore);
@@ -15,13 +17,7 @@ function Map({ data }) {
       onViewportChange={setViewport}
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
     >
-      {data.map((taxi, i) => (
-        <Marker key={i} longitude={taxi[0]} latitude={taxi[1]}>
-          <span role="img" aria-label="sheep">
-            🐑
-          </span>
-        </Marker>
-      ))}
+      <MarkerTaxi data={data} />
     </ReactMapGL>
   );
 }
